@@ -16,3 +16,59 @@ The hidden tests target common shallow-implementation failures:
 - failing on negative values or degenerate inputs
 
 This task is useful because many generated solutions can appear correct on simple examples while failing numerical edge cases.
+
+### Manual Validation
+
+To verify that Task 001 distinguishes robust implementations from superficially correct ones, I evaluated three deliberately flawed implementations. Each implementation represented a common mistake that an LLM coding agent might make.
+
+1. Missing zero-variance handling
+
+This implementation correctly computed the rolling mean and standard deviation but did not check whether the standard deviation was zero before dividing.
+
+Public tests: PASS
+Hidden tests: FAIL
+Detected by: test_constant_sequence_zero_variance
+Observed failure: The implementation attempted to divide by zero when the rolling window contained identical values.
+Failure category: Numerical edge case / zero-variance handling
+
+This result shows that the public tests were not sufficient to detect the error, while the hidden constant-sequence test successfully identified it.
+
+2. Full-history instead of rolling-window implementation
+
+This implementation calculated each z-score using every value from the beginning of the sequence through the current position rather than using only the specified rolling window.
+
+Public tests: PASS
+Hidden tests: FAIL
+Detected by: test_uses_rolling_window_not_full_history
+Observed failure: The implementation returned an incorrect z-score for the final value in [1, 2, 100, 101] because earlier values remained in the calculation.
+Failure category: Specification misunderstanding / incorrect window selection
+
+This result demonstrates that a solution can pass simple examples while still implementing the wrong statistical procedure.
+
+3. Missing NaN handling
+
+This implementation attempted to compute statistics directly over every value in the rolling window without filtering out NaN values or separately handling a current value that was NaN.
+
+Public tests: PASS
+Hidden tests: FAIL
+Detected by:
+test_nan_current_value_returns_nan
+test_nan_ignored_in_window
+test_all_nan_input
+Observed failure: NaN values propagated through the mean and standard-deviation calculations, producing incorrect or undefined results for later positions.
+Failure category: Missing-value handling / numerical robustness
+
+This result shows that basic correctness tests do not adequately measure robustness when inputs contain missing numerical values.
+
+Validation Conclusion
+
+All three deliberately flawed implementations passed the basic public tests but failed one or more targeted hidden tests. This suggests that the hidden test suite adds meaningful discriminatory power rather than merely repeating the public test coverage.
+
+The validation also confirms that Task 001 measures several distinct capabilities:
+
+adherence to rolling-window semantics
+handling of degenerate numerical cases
+correct treatment of missing values
+robustness beyond basic example inputs
+
+Future validation should include additional flawed implementations, such as one that uses sample standard deviation instead of population standard deviation and one that mishandles windows larger than the input sequence.
