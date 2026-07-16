@@ -1,6 +1,6 @@
-# CodeAgentBench-Lite
+# CodeAgentBench
 
-CodeAgentBench-Lite is a small, reproducible benchmark for evaluating how reliably LLM coding agents solve verifiable programming tasks.
+CodeAgentBench is a small, reproducible benchmark for evaluating how reliably LLM coding agents solve verifiable programming tasks.
 
 The project focuses on more than whether generated code looks plausible. Each task is graded through executable tests, including hidden cases designed to expose shallow implementations, missed edge cases, and specification misunderstandings.
 
