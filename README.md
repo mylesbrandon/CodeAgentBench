@@ -45,7 +45,7 @@ Planned next steps:
 ## Repository Structure
 
 ```text
-codeagentbench/
+CodeAgentBench/
 ├── agents/                  # LLM agent and prompting strategies
 ├── docs/                    # Benchmark design and methodology notes
 ├── reports/                 # Technical reports and project writeups
@@ -128,7 +128,7 @@ Clone the repository and enter the project directory:
 
 ```bash
 git clone <repository-url>
-cd codeagentbench
+cd CodeAgentBench
 ```
 
 Create a virtual environment:
