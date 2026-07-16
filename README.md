@@ -8,7 +8,7 @@ The current version contains one complete numerical-robustness task and a lightw
 
 ## Project Goals
 
-CodeAgentBench-Lite is being built to explore questions such as:
+CodeAgentBench is being built to explore questions such as:
 
 * Can an LLM-generated solution pass both basic and adversarial tests?
 * How often do coding agents pass visible tests but fail hidden tests?
@@ -45,7 +45,7 @@ Planned next steps:
 ## Repository Structure
 
 ```text
-codeagentbench-lite/
+codeagentbench/
 ├── agents/                  # LLM agent and prompting strategies
 ├── docs/                    # Benchmark design and methodology notes
 ├── reports/                 # Technical reports and project writeups
