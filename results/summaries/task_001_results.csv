@@ -1,0 +1,2 @@
+run_id,task_id,task_name,model_id,model,strategy,timestamp,public_passed,public_total,public_status,hidden_passed,hidden_total,hidden_status,overall_status,failure_category
+20260717_143000_model_001_one_shot,task_001,rolling_zscore,model_001,GPT-5.6,one_shot,2026-07-17T14:30:00-05:00,3,3,pass,8,8,pass,pass,
