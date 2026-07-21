@@ -4,7 +4,7 @@ CodeAgentBench is a small, reproducible benchmark for evaluating how reliably LL
 
 The project focuses on more than whether generated code looks plausible. Each task is graded through executable tests, including hidden cases designed to expose shallow implementations, missed edge cases, and specification misunderstandings.
 
-The current version contains one complete numerical-robustness task and a lightweight Python runner for evaluating candidate solutions.
+The benchmark currently contains two execution-graded Python tasks across numerical robustness and algorithmic debugging.
 
 ## Project Goals
 
@@ -30,6 +30,7 @@ Currently implemented:
 * Task metadata and failure-mode labels
 * A task runner for evaluating candidate solutions
 * Task 001: Rolling Z-Score
+* Task 002: Shortest-Path Bug Repair
 * Initial benchmark-design and failure-analysis documentation
 
 Planned next steps:
@@ -104,6 +105,13 @@ Structured information about the task, including:
 * number of public and hidden tests
 * targeted failure modes
 * expected agent mistakes
+
+## Current Benchmark Tasks
+
+| Task | Category | Capability |
+|---|---|---|
+| `task_001_rolling_zscore` | Numerical robustness | Rolling windows, NaNs, zero variance, population standard deviation |
+| `task_002_shortest_path` | Algorithmic debugging | Dijkstra repair, edge relaxation, graph edge cases, path reconstruction |
 
 ## Task 001: Rolling Z-Score
 

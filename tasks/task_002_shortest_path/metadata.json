@@ -1,0 +1,36 @@
+{
+  "task_id": "task_002",
+  "name": "shortest_path",
+  "task_type": "bug_repair",
+  "category": "algorithmic_debugging",
+  "difficulty": "medium",
+  "language": "python",
+  "concepts": [
+    "directed_graphs",
+    "dijkstra_algorithm",
+    "priority_queues",
+    "edge_relaxation",
+    "stale_heap_entries",
+    "path_reconstruction"
+  ],
+  "public_tests": 5,
+  "hidden_tests": 8,
+  "failure_modes_targeted": [
+    "incorrect_edge_relaxation",
+    "unreachable_target_behavior",
+    "duplicate_edge_handling",
+    "zero_weight_edges",
+    "cycle_handling",
+    "incorrect_path_reconstruction",
+    "graph_directionality",
+    "input_mutation"
+  ],
+  "expected_agent_failure_modes": [
+    "overwrites a shorter distance with a longer distance",
+    "returns None for unreachable nodes",
+    "assumes every graph is connected",
+    "mishandles duplicate edges",
+    "fails to skip stale priority queue entries",
+    "returns the right distance with the wrong path"
+  ]
+}

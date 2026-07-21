@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "run_id": "20260720_213222_719_reference_validation",
+  "timestamp": "2026-07-20T21:32:22-05:00",
+  "task": {
+    "id": "task_002",
+    "name": "shortest_path",
+    "path": "tasks/task_002_shortest_path"
+  },
+  "candidate": {
+    "id": "reference",
+    "model": "reference",
+    "condition": "validation",
+    "path": "results/baselines/task_002/reference_solution.py"
+  },
+  "tests": {
+    "public": {
+      "status": "pass",
+      "passed": 5,
+      "total": 5,
+      "duration_seconds": 0.553,
+      "output": "public_test_output.txt",
+      "failed_tests": []
+    },
+    "hidden": {
+      "status": "pass",
+      "passed": 8,
+      "total": 8,
+      "duration_seconds": 0.533,
+      "output": "hidden_test_output.txt",
+      "failed_tests": []
+    }
+  },
+  "overall_status": "pass",
+  "failure_category": null
+}

@@ -72,3 +72,35 @@ correct treatment of missing values
 robustness beyond basic example inputs
 
 Future validation should include additional flawed implementations, such as one that uses sample standard deviation instead of population standard deviation and one that mishandles windows larger than the input sequence.
+
+## Task 002: Shortest Path
+
+### Capability being evaluated
+
+Task 002 evaluates algorithmic debugging, edge relaxation, priority-queue reasoning, and robust handling of graph edge cases.
+
+### Controlled baseline results
+
+#### Reference solution
+
+- Public tests: PASS (5/5)
+- Hidden tests: PASS (8/8)
+- Expected outcome: all tests pass.
+
+#### No-relaxation-check baseline
+
+- Public tests: PASS (5/5)
+- Hidden tests: FAIL (4/8 passed)
+- Failed tests: `test_unreachable_target`, `test_duplicate_edges_choose_cheapest`, `test_node_with_empty_adjacency_list`, `test_graph_is_directed`
+- Main failure: the implementation can overwrite a shorter distance with a longer distance. Because this controlled baseline is the flawed starter, it also retains the starter's incorrect unreachable-path return value.
+
+#### Unreachable-returns-None baseline
+
+- Public tests: PASS (5/5)
+- Hidden tests: FAIL (5/8 passed)
+- Failed tests: `test_unreachable_target`, `test_node_with_empty_adjacency_list`, `test_graph_is_directed`
+- Main failure: the implementation violates the specified unreachable-path return format.
+
+### Benchmark conclusion
+
+The task distinguishes basic shortest-path behavior from robust implementation. Public tests establish the normal contract, while hidden tests detect plausible defects involving duplicate edges and unreachable nodes.

@@ -1,0 +1,62 @@
+F.F..FF.                                                                 [100%]
+================================== FAILURES ===================================
+___________________________ test_unreachable_target ___________________________
+
+    def test_unreachable_target():
+        graph = {
+            "A": [("B", 1)],
+            "B": [],
+            "C": [],
+        }
+
+>       assert shortest_path(graph, "A", "C") == (math.inf, [])
+E       AssertionError: assert None == (inf, [])
+E        +  where None = shortest_path({'A': [('B', 1)], 'B': [], 'C': []}, 'A', 'C')
+
+test_hidden.py:13: AssertionError
+____________________ test_duplicate_edges_choose_cheapest _____________________
+
+    def test_duplicate_edges_choose_cheapest():
+        graph = {
+            "A": [("B", 1), ("B", 10)],
+            "B": [],
+        }
+
+        distance, path = shortest_path(graph, "A", "B")
+
+>       assert distance == 1
+E       assert 10 == 1
+
+test_hidden.py:37: AssertionError
+_____________________ test_node_with_empty_adjacency_list _____________________
+
+    def test_node_with_empty_adjacency_list():
+        graph = {
+            "A": [],
+            "B": [],
+        }
+
+>       assert shortest_path(graph, "A", "B") == (math.inf, [])
+E       AssertionError: assert None == (inf, [])
+E        +  where None = shortest_path({'A': [], 'B': []}, 'A', 'B')
+
+test_hidden.py:75: AssertionError
+___________________________ test_graph_is_directed ____________________________
+
+    def test_graph_is_directed():
+        graph = {
+            "A": [("B", 2)],
+            "B": [],
+        }
+
+>       assert shortest_path(graph, "B", "A") == (math.inf, [])
+E       AssertionError: assert None == (inf, [])
+E        +  where None = shortest_path({'A': [('B', 2)], 'B': []}, 'B', 'A')
+
+test_hidden.py:84: AssertionError
+=========================== short test summary info ===========================
+FAILED test_hidden.py::test_unreachable_target - AssertionError: assert None ...
+FAILED test_hidden.py::test_duplicate_edges_choose_cheapest - assert 10 == 1
+FAILED test_hidden.py::test_node_with_empty_adjacency_list - AssertionError: ...
+FAILED test_hidden.py::test_graph_is_directed - AssertionError: assert None =...
+4 failed, 4 passed in 0.11s
