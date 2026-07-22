@@ -1,0 +1,26 @@
+{
+  "model": "incomplete",
+  "condition": "validation",
+  "task_count": 2,
+  "attempted_count": 1,
+  "missing_count": 1,
+  "public_pass_count": 1,
+  "hidden_pass_count": 1,
+  "overall_pass_count": 1,
+  "public_pass_rate": 0.5,
+  "hidden_pass_rate": 0.5,
+  "overall_pass_rate": 0.5,
+  "public_hidden_gap": 0.0,
+  "category_results": {
+    "numerical_robustness": {
+      "tasks": 1,
+      "attempted": 1,
+      "passed": 1
+    },
+    "algorithmic_debugging": {
+      "tasks": 1,
+      "attempted": 0,
+      "passed": 0
+    }
+  }
+}

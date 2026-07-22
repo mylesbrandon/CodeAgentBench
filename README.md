@@ -167,51 +167,43 @@ The current project requires Python and `pytest`.
 
 ## Running a Task
 
-Run Task 001 against the current contents of `starter.py`:
+Run Task 001 against the verified reference solution:
 
 ```bash
-python runner/run_task.py tasks/task_001_rolling_zscore
-```
-
-Run it against the verified reference solution:
-
-```bash
-python runner/run_task.py tasks/task_001_rolling_zscore \
-  --solution tasks/task_001_rolling_zscore/reference_solution.py
+python runner/run_task.py \
+  --task tasks/task_001_rolling_zscore \
+  --solution results/candidates/reference/task_001.py \
+  --model reference \
+  --condition validation
 ```
 
 On Windows PowerShell, the same command can be written on one line:
 
 ```powershell
-python runner/run_task.py tasks/task_001_rolling_zscore --solution tasks/task_001_rolling_zscore/reference_solution.py
+python runner/run_task.py --task tasks/task_001_rolling_zscore --solution results/candidates/reference/task_001.py --model reference --condition validation
 ```
 
 Expected output for a correct solution:
 
 ```text
-Task: task_001_rolling_zscore
-Solution: reference_solution.py
-
+Task: task_001 — rolling_zscore
+Model: reference
+Condition: validation
 Public tests: PASS
 Hidden tests: PASS
 Overall: PASS
 ```
 
-Run only the public tests:
+## Run the full benchmark
 
 ```bash
-python runner/run_task.py tasks/task_001_rolling_zscore \
-  --solution path/to/candidate_solution.py \
-  --public-only
+python runner/run_benchmark.py \
+  --solution-set results/candidates/reference \
+  --model reference \
+  --condition validation
 ```
 
-Show complete pytest output:
-
-```bash
-python runner/run_task.py tasks/task_001_rolling_zscore \
-  --solution path/to/candidate_solution.py \
-  --show-output
-```
+See `docs/running_the_benchmark.md` for full instructions.
 
 ## Evaluation Workflow
 

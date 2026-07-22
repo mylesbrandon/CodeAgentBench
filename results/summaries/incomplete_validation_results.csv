@@ -1,0 +1,3 @@
+run_id,task_id,task_name,category,difficulty,model,condition,status,public_passed,hidden_passed,overall_passed,failed_public_test_count,failed_hidden_test_count,run_path
+20260722T175618986791Z_task_001_incomplete_validation,task_001,rolling_zscore,numerical_robustness,medium,incomplete,validation,attempted,True,True,True,0,0,C:\Users\myles\OneDrive\Documents\codeagentbench-lite\results\runs\task_001\20260722T175618986791Z_task_001_incomplete_validation
+,task_002,shortest_path,algorithmic_debugging,medium,incomplete,validation,missing_candidate,False,False,False,0,0,

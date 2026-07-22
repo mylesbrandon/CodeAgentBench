@@ -1,0 +1,3 @@
+run_id,task_id,task_name,category,difficulty,model,condition,status,public_passed,hidden_passed,overall_passed,failed_public_test_count,failed_hidden_test_count,run_path
+20260722T175557749768Z_task_001_manual-flawed_validation,task_001,rolling_zscore,numerical_robustness,medium,manual-flawed,validation,attempted,False,False,False,1,2,C:\Users\myles\OneDrive\Documents\codeagentbench-lite\results\runs\task_001\20260722T175557749768Z_task_001_manual-flawed_validation
+20260722T175558989801Z_task_002_manual-flawed_validation,task_002,shortest_path,algorithmic_debugging,medium,manual-flawed,validation,attempted,True,False,False,0,4,C:\Users\myles\OneDrive\Documents\codeagentbench-lite\results\runs\task_002\20260722T175558989801Z_task_002_manual-flawed_validation
