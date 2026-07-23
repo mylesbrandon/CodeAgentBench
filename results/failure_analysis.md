@@ -104,3 +104,56 @@ Task 002 evaluates algorithmic debugging, edge relaxation, priority-queue reason
 ### Benchmark conclusion
 
 The task distinguishes basic shortest-path behavior from robust implementation. Public tests establish the normal contract, while hidden tests detect plausible defects involving duplicate edges and unreachable nodes.
+
+## Task 003: Lookahead-Safe Signal Alignment
+
+### Capability being evaluated
+
+Task 003 evaluates time-series alignment and leakage prevention. The
+return from index `t - 1` to index `t` uses `signals[t - 1]` because
+that is the latest position known before the price movement occurs.
+Using `signals[t]` would let a strategy act on an already-realized
+return.
+
+Transaction costs use the same timing convention. The initial
+position is free, and later output indices deduct:
+
+```text
+transaction_cost * abs(signals[t - 1] - signals[t - 2])
+```
+
+### Controlled baseline results
+
+#### Reference solution
+
+- Public tests: PASS (6/6)
+- Hidden tests: PASS (10/10)
+
+#### Current-signal lookahead baseline
+
+- Public tests: PASS (6/6)
+- Hidden tests: FAIL (5/10 passed)
+- Detected failures: earning a price jump after its signal, using the
+  opposite current signal, and misaligning turnover costs.
+
+#### Ignores-transaction-costs baseline
+
+- Public tests: PASS (6/6)
+- Hidden tests: FAIL (7/10 passed)
+- Detected failures: cost timing, turnover-size cost, and costs on flat
+  prices.
+
+#### Flat-trade-cost baseline
+
+- Public tests: PASS (6/6)
+- Hidden tests: FAIL (8/10 passed)
+- Detected failures: position changes larger than one unit are charged
+  a flat fee instead of proportional turnover.
+
+### Benchmark conclusion
+
+All controlled defects pass the public examples, while the hidden
+suite distinguishes lookahead leakage from two different
+transaction-cost mistakes. This keeps the task focused on causal
+alignment while still testing a realistic consequence of position
+changes.

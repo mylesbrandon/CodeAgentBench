@@ -1,0 +1,33 @@
+{
+  "task_id": "task_003",
+  "name": "signal_alignment",
+  "task_type": "bug_repair",
+  "category": "time_series_correctness",
+  "difficulty": "medium",
+  "language": "python",
+  "concepts": [
+    "time_series",
+    "return_calculation",
+    "signal_alignment",
+    "lookahead_bias",
+    "transaction_costs",
+    "turnover"
+  ],
+  "public_tests": 6,
+  "hidden_tests": 10,
+  "failure_modes_targeted": [
+    "current_signal_lookahead",
+    "incorrect_return_alignment",
+    "incorrect_transaction_cost_timing",
+    "ignores_position_change_size",
+    "incorrect_short_position_handling",
+    "invalid_price_handling"
+  ],
+  "expected_agent_failure_modes": [
+    "multiplies a realized return by the current signal",
+    "charges transaction cost at the signal timestamp",
+    "uses a flat fee instead of position turnover",
+    "charges for the initial position establishment",
+    "fails to reject nonpositive prices"
+  ]
+}

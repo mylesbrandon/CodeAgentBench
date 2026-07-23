@@ -4,7 +4,9 @@ CodeAgentBench is a small, reproducible benchmark for evaluating how reliably LL
 
 The project focuses on more than whether generated code looks plausible. Each task is graded through executable tests, including hidden cases designed to expose shallow implementations, missed edge cases, and specification misunderstandings.
 
-The benchmark currently contains two execution-graded Python tasks across numerical robustness and algorithmic debugging.
+The benchmark currently contains three execution-graded Python tasks
+across numerical robustness, algorithmic debugging, and time-series
+correctness.
 
 ## Project Goals
 
@@ -31,6 +33,7 @@ Currently implemented:
 * A task runner for evaluating candidate solutions
 * Task 001: Rolling Z-Score
 * Task 002: Shortest-Path Bug Repair
+* Task 003: Lookahead-Safe Signal Alignment
 * Initial benchmark-design and failure-analysis documentation
 
 Planned next steps:
@@ -112,6 +115,7 @@ Structured information about the task, including:
 |---|---|---|
 | `task_001_rolling_zscore` | Numerical robustness | Rolling windows, NaNs, zero variance, population standard deviation |
 | `task_002_shortest_path` | Algorithmic debugging | Dijkstra repair, edge relaxation, graph edge cases, path reconstruction |
+| `task_003_signal_alignment` | Time-series correctness | Return alignment, lookahead-bias prevention, turnover-based transaction costs |
 
 ## Task 001: Rolling Z-Score
 
@@ -129,6 +133,18 @@ It evaluates whether the candidate can correctly handle:
 * numerical edge cases
 
 The task is designed to catch implementations that appear correct on simple increasing sequences but fail under less obvious conditions.
+
+## Task 003: Lookahead-Safe Signal Alignment
+
+Task 003 asks an agent to repair a strategy-return calculation that
+uses the current signal for an already-realized price movement. A
+signal at index `t - 1` is the latest position known before the return
+from `t - 1` to `t`, so the aligned calculation uses
+`signals[t - 1]`.
+
+The task also checks proportional transaction costs, turnover timing,
+long and short positions, flat prices, invalid prices, and boundary
+behavior.
 
 ## Installation
 
@@ -316,7 +332,7 @@ Do not run arbitrary untrusted code using the current runner.
 * [ ] Record public and hidden test results
 * [ ] Create a structured results format
 * [ ] Write the first detailed failure analyses
-* [ ] Add Tasks 002–005
+* [ ] Add Tasks 004–005
 
 ### Phase 3: Benchmark Expansion
 

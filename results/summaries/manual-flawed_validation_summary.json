@@ -1,16 +1,16 @@
 {
   "model": "manual-flawed",
   "condition": "validation",
-  "task_count": 2,
-  "attempted_count": 2,
+  "task_count": 3,
+  "attempted_count": 3,
   "missing_count": 0,
-  "public_pass_count": 1,
+  "public_pass_count": 2,
   "hidden_pass_count": 0,
   "overall_pass_count": 0,
-  "public_pass_rate": 0.5,
+  "public_pass_rate": 0.6666666666666666,
   "hidden_pass_rate": 0.0,
   "overall_pass_rate": 0.0,
-  "public_hidden_gap": 0.5,
+  "public_hidden_gap": 0.6666666666666666,
   "category_results": {
     "numerical_robustness": {
       "tasks": 1,
@@ -18,6 +18,11 @@
       "passed": 0
     },
     "algorithmic_debugging": {
+      "tasks": 1,
+      "attempted": 1,
+      "passed": 0
+    },
+    "time_series_correctness": {
       "tasks": 1,
       "attempted": 1,
       "passed": 0
